@@ -1,0 +1,40 @@
+/* Styling for the image container */
+.image-container {
+  position: relative; /* Needed for positioning the zoomed effect */
+  overflow: hidden; /* Prevent overflow */
+  width: 100%; /* Ensure the container takes the full width */
+  height: auto; /* Maintain aspect ratio */
+}
+
+/* Styling for the product image */
+.product-image {
+  width: 100%;
+  height: auto;
+  cursor: crosshair; /* Cursor style when hovering over the image */
+}
+
+/* Styling for the zoomed section in col-md-8 */
+.zoomed-section {
+  position: absolute; /* Position absolute to overlay on the text */
+  top: 0; /* Start at the top */
+  left: 0; /* Start from the left */
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  background-repeat: no-repeat; /* Prevent background repeat */
+  border: 2px solid #000;
+  background-size: 200%; /* Make the background larger to enable zoom */
+  display: none; /* Hidden by default */
+  z-index: 1000; /* Ensure it appears above the text */
+}
+
+.cursor-circle {
+  position: absolute;
+  width: 100px; /* Circle width */
+  height: 100px; /* Circle height */
+  border: 2px solid #000; /* Circle border color and thickness */
+  border-radius: 50%; /* Make it a circle */
+  pointer-events: none; /* Allow mouse events to pass through */
+  transform: translate(-50%, -50%); /* Center the circle at the cursor */
+  display: none; /* Hidden by default */
+  z-index: 2000; /* Higher z-index to display above other elements */
+}

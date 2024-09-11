@@ -1,0 +1,93 @@
+/* catagories.css */
+
+.container-nav {
+    background-color: #e8e9ec; /* Flipkart blue */
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position:sticky ;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .navbar-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .navbar-links {
+    display: flex;
+    gap: 30px; /* Space between main categories */
+    position: relative; /* Relative positioning for dropdown positioning */
+  }
+  
+  .navbar-link {
+    color: #312d2d;
+    text-decoration: none;
+    font-weight: bold;
+    position: relative;
+    cursor: pointer;
+    padding: 10px 15px;
+    transition: color 0.3s ease;
+  }
+  
+  .navbar-link:hover {
+    color: #0b58f1; /* Hover color */
+    opacity: 1;
+  }
+  
+  .dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    padding: 0; /* Remove padding */
+    min-width: 200px;
+    max-height: 0; /* Initially collapsed */
+    overflow: hidden;
+    transition: max-height 0.3s ease; /* Transition for slide effect */
+    z-index: 1000;
+    margin: 0; /* Remove margin */
+  }
+  
+  .dropdown.open {
+    max-height: 200px; /* Height when opened, adjust as needed */
+  }
+  
+  .dropdown-link {
+    display: block;
+    padding: 8px 16px;
+    color: #333;
+    text-decoration: none;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .dropdown-link:hover {
+    background-color: #f1f1f1;
+  }
+  .dropdown {
+    display: none;
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    z-index: 1000;
+  }
+  
+  .dropdown.open {
+    display: block;
+  }
+  
+  .navbar-link {
+    position: relative;
+    cursor: pointer;
+  }
+  

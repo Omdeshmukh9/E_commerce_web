@@ -1,0 +1,77 @@
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: url('https://picsum.photos/1920/1080') no-repeat center center/cover; /* Example background */
+  }
+
+  .auth-card {
+    background: rgba(255, 255, 255, 0.2); /* Glass effect */
+    backdrop-filter: blur(15px);
+    padding: 2rem;
+    border-radius: 10px;
+    max-width: 400px;
+    width: 100%;
+    
+    text-align: center;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+  
+  .auth-card h2 {
+    margin-bottom: 1rem;
+    color:black;
+  }
+  
+  .form-group {
+    margin-bottom: 1rem;
+  }
+  
+  .form-control {
+    padding: 0.75rem;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 0.75rem;
+    width: 100%;
+    border: 1px solid black;
+
+  }
+  
+  .btn {
+    height: '35px';
+    width: '53px';
+    margin-top:'11px';
+  }
+  
+  .social-login {
+    margin-top: 1rem;
+  }
+  
+  .social-login button {
+    margin: 0.5rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .toggle-text {
+    color:black;
+    margin-top: 1rem;
+  }
+  
+  .toggle-link {
+    color: #007bff;
+    cursor: pointer;
+    text-decoration: underline;
+   
+  }
+  .form-control::placeholder {
+    color: black; /* Set placeholder color to black */
+    opacity: 1; 
+}
+  
+  .toggle-link:hover {
+    color: #0056b3;
+  }
+  

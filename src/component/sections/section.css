@@ -1,0 +1,24 @@
+/* App.css or ExtraSection.css */
+.extra-section {
+    background-color: #f8f9fa;
+  }
+  
+  .extra-section h2 {
+    margin-bottom: 20px;
+  }
+  
+  .extra-section p {
+    margin-bottom: 20px;
+  }
+  
+  .extra-section .btn {
+    margin-top: 10px;
+  }
+  #data {
+    transition: transform 0.3s ease; /* Smooth transition for the transform property */
+  }
+  
+  #data:hover {
+    transform: rotate(2deg); /* Rotate slightly when hovered */
+  }
+  

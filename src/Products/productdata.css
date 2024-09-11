@@ -1,0 +1,248 @@
+/* slider.css */
+
+.slick-prev, .slick-next {
+  width: 40px;
+  height: 40px;
+  /* background-color: black;  */
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.slick-prev:before, .slick-next:before {
+  font-size: 24px;
+  color: rgb(0, 0, 0); /* Change to your desired color */
+}
+
+/* Positioning arrows */
+.slick-prev {
+  left: -40px;
+}
+
+.slick-next {
+  right: -40px;
+}
+
+/* General Styling */
+.bg-orange-50 {
+  background-color: #fff7ed; /* Light orange background */
+}
+
+.max-w-7xl {
+  max-width: 1280px; /* Container max width */
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.p-4 {
+  padding: 1rem;
+}
+
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.sm\:px-6 {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.lg\:px-8 {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+/* Header */
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem; /* mb-6 */
+}
+
+.text-3xl {
+  font-size: 1.875rem; /* Large text size */
+  font-weight: 700; /* font-bold */
+  color: #1a202c; /* Custom color for header text */
+}
+
+.tracking-wide {
+  letter-spacing: 0.05em; /* Spacing between letters */
+}
+
+.bg-purple-400 {
+  background-color: #a78bfa; /* Purple button background */
+}
+
+.text-white {
+  color: #fff; /* Button text color */
+}
+
+.rounded-full {
+  border-radius: 9999px; /* Full-rounded button */
+}
+
+.hover\:bg-purple-600:hover {
+  background-color: #6d28d9; /* Hover color for button */
+}
+
+.transition {
+  transition: all 0.3s ease-in-out;
+}
+
+/* Slider Container */
+.slider-container {
+  padding: 0 10px; /* Adds padding to slider */
+}
+
+.relative {
+  position: relative;
+}
+
+.mx-2 {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.p-2 {
+  padding: 0.5rem;
+}
+
+.block {
+  display: block;
+}
+
+/* Product Card */
+.relative {
+  position: relative;
+}
+
+.rounded-lg {
+  border-radius: 0.75rem; /* Rounded corners */
+}
+
+.overflow-hidden {
+  overflow: hidden; /* Ensures content doesn't overflow */
+}
+
+.bg-blue-50 {
+  background-color: #ebf8ff; /* Light blue background */
+}
+
+/* Image Styling */
+.w-full {
+  width: 100%;
+}
+
+.h-44 {
+  height: 11rem; /* Height of the image */
+}
+
+.object-cover {
+  object-fit: cover; /* Ensures the image covers the entire area */
+}
+
+.object-center {
+  object-position: center; /* Centers the image */
+}
+
+/* Bookmark Button */
+.absolute {
+  position: absolute;
+}
+
+.top-2 {
+  top: 0.5rem;
+}
+
+.right-2 {
+  right: 0.5rem;
+}
+
+.bg-gray-300 {
+  background-color: #e2e8f0; /* Light gray background */
+}
+
+.hover\:bg-gray-400:hover {
+  background-color: #cbd5e0; /* Slightly darker gray on hover */
+}
+
+.text-gray-800 {
+  color: #2d3748; /* Dark gray text */
+}
+
+.font-bold {
+  font-weight: 700; /* Bold font */
+}
+
+.py-1 {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+.px-2 {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.rounded-full {
+  border-radius: 9999px; /* Full-rounded corners */
+}
+
+.text-xl {
+  font-size: 1.25rem; /* Large text size */
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+/* Product Info */
+.p-4 {
+  padding: 1rem; /* Adds padding to text */
+}
+
+.text-center {
+  text-align: center; /* Center-align text */
+}
+
+.text-gray-800 {
+  color: #2d3748; /* Dark gray text */
+}
+
+.text-sm {
+  font-size: 0.875rem; /* Small text size */
+}
+
+.text-gray-600 {
+  color: #718096; /* Medium gray text */
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem; /* Adds margin-bottom */
+}
+
+.text-lg {
+  font-size: 1.125rem; /* Large text size */
+}
+
+.text-purple-600 {
+  color: #6b46c1; /* Purple text color */
+}
+
+/* Loading and Error Messages */
+.text-center {
+  text-align: center;
+}
+
+.mt-5 {
+  margin-top: 1.25rem; /* Adds margin-top */
+}
+
+.text-danger {
+  color: #e3342f; /* Red color for error messages */
+}
+
