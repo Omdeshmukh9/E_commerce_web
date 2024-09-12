@@ -1,0 +1,71 @@
+/* Kids Clothes Carousel Adjustments */
+.kids-clothes-item {
+    width: 270px;
+    padding: 10px; /* Adds spacing around carousel items */
+    box-sizing: border-box; /* Ensures padding doesn't affect width */
+  }
+  
+  .kids-clothes-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Ensure elements are spaced evenly */
+    align-items: center; /* Center-align the elements */
+    border: 1px solid #ddd; /* Light border around the card */
+    border-radius: 10px; /* Rounded corners */
+    overflow: hidden; /* Ensures content doesn't overflow */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    background-color: #fff; /* White background for each card */
+    height: 450px; /* Fixed height for the card */
+    width: 100%; 
+    padding: 15px; /* Padding inside the card */
+  }
+  
+  .kids-clothes-image {
+    width: 100%; /* Full width of the card */
+    height: 200px; /* Fixed height for images */
+    object-fit: cover; /* Ensures images are cropped properly without distortion */
+    border-bottom: 1px solid #ddd; /* Border to separate image and content */
+    margin-bottom: 10px; /* Adds spacing below the image */
+  }
+  
+  .kids-clothes-info {
+    flex-grow: 1; /* Ensures info section grows to fill space */
+    text-align: center; /* Center-aligns text */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%; /* Full height for content area */
+  }
+  
+  .kids-clothes-title {
+    font-size: 18px; /* Font size for titles */
+    font-weight: bold; /* Bold titles */
+    margin: 0 0 10px; /* Adds space below the title */
+  }
+  
+  .kids-clothes-description {
+    font-size: 14px; /* Font size for description */
+    color: #666; /* Lighter color for description */
+    margin: 0 0 10px; /* Adds space below the description */
+  }
+  
+  .kids-clothes-price,
+  .kids-clothes-size {
+    font-size: 14px; /* Font size for price and size */
+    margin: 0 0 10px; /* Adds space below */
+  }
+  
+  .btn {
+    margin-top: auto; 
+  }
+  
+  /* Carousel Container Adjustments */
+  .carousel-container {
+    margin: 0 auto; /* Center the carousel */
+    padding: 20px 0; /* Adds spacing above and below the carousel */
+  }
+  
+  .carousel-item-padding-40-px {
+    padding: 0 50px; /* Adjust padding for carousel items */
+  }
+  

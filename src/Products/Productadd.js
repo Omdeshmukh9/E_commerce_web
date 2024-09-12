@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './productadd.css';
 
@@ -9,6 +9,7 @@ export default function AddProductForm() {
     price: '',
     discount: '',
     item_category: '',
+    subcategory_id: '',
     item_image: null,
     brand: '',
     quantity: '',
@@ -17,6 +18,34 @@ export default function AddProductForm() {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   const [loading, setLoading] = useState(false);
+  const [categories, setCategories] = useState([]);
+  const [subcategories, setSubcategories] = useState([]);
+
+  useEffect(() => {
+    // Fetch categories
+    const fetchCategories = async () => {
+      try {
+        const response = await axios.get('http://localhost:8090/getcategory');
+        setCategories(response.data);
+      } catch (err) {
+        console.error('Error fetching categories:', err);
+      }
+    };
+
+    fetchCategories();
+  }, []);
+
+  const handleCategoryChange = async (e) => {
+    const categoryName = e.target.value;
+    setProduct((prevProduct) => ({ ...prevProduct, item_category: categoryName }));
+    
+    try {
+      const response = await axios.get(`http://localhost:8090/${categoryName}/subcategories`);
+      setSubcategories(response.data);
+    } catch (err) {
+      console.error('Error fetching subcategories:', err);
+    }
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -45,6 +74,7 @@ export default function AddProductForm() {
     formData.append('price', product.price);
     formData.append('discount', product.discount);
     formData.append('item_category', product.item_category);
+    formData.append('subcategory_id', product.subcategory_id);
     formData.append('item_image', product.item_image);
     formData.append('brand', product.brand);
     formData.append('quantity', product.quantity);
@@ -52,9 +82,7 @@ export default function AddProductForm() {
     try {
       const response = await axios.post(process.env.REACT_APP_PRODUCT_ADD, formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
-        
       });
-      console.log("This is api to add product ",response);
 
       setSuccess('Product added successfully!');
       setProduct({
@@ -63,6 +91,7 @@ export default function AddProductForm() {
         price: '',
         discount: '',
         item_category: '',
+        subcategory_id: '',
         item_image: null,
         brand: '',
         quantity: '',
@@ -111,14 +140,28 @@ export default function AddProductForm() {
           value={product.discount}
           onChange={handleChange}
         />
-        <input
-          type="text"
+        <select
           name="item_category"
-          placeholder="Category"
           value={product.item_category}
+          onChange={handleCategoryChange}
+          required
+        >
+          <option value="">Select Category</option>
+          {categories.map(category => (
+            <option key={category.id} value={category.name}>{category.name}</option>
+          ))}
+        </select>
+        <select
+          name="subcategory_id"
+          value={product.subcategory_id}
           onChange={handleChange}
           required
-        />
+        >
+          <option value="">Select Subcategory</option>
+          {subcategories.map(subcategory => (
+            <option key={subcategory.id} value={subcategory.id}>{subcategory.name}</option>
+          ))}
+        </select>
         <input
           type="file"
           name="item_image"

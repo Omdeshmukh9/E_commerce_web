@@ -172,21 +172,59 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
+// app.post("/Addproduct", upload.single('item_image'), (req, res) => {
+//     const { product_name, description, price, discount, item_category, brand, quantity } = req.body;
+
+//     // File information
+//     const item_image = req.file ? req.file.filename : null; // Get the file name
+
+//     if (!product_name || !description || !price || !discount || !item_category || !item_image || !brand || !quantity) {
+//         return res.status(400).send({ message: "All fields are required, including an image." });
+//     }
+
+//     const query = "INSERT INTO products (product_name, description, price, discount, item_category, item_image, brand, quantity) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+
+//     db.query(
+//         query,
+//         [product_name, description, price, discount, item_category, item_image, brand, quantity],
+//         (err, result) => {
+//             if (err) {
+//                 console.error("Error adding product: ", err);
+//                 return res.status(500).send({ message: "Failed to add product.", error: err });
+//             }
+
+//             console.log("Product added successfully:", result);
+//             res.status(201).send({ message: "Product added successfully.", productId: result.insertId });
+//         }
+//     );
+// });
+
+
+
+// creating API for catagories
+
+
+
+// Get all categories
+
 app.post("/Addproduct", upload.single('item_image'), (req, res) => {
-    const { product_name, description, price, discount, item_category, brand, quantity } = req.body;
+    const { product_name, description, price, discount, item_category, brand, quantity, subcategory_id } = req.body;
 
     // File information
     const item_image = req.file ? req.file.filename : null; // Get the file name
 
-    if (!product_name || !description || !price || !discount || !item_category || !item_image || !brand || !quantity) {
-        return res.status(400).send({ message: "All fields are required, including an image." });
+    if (!product_name || !description || !price || !discount || !item_category || !item_image || !brand || !quantity || !subcategory_id) {
+        return res.status(400).send({ message: "All fields are required, including an image and subcategory." });
     }
 
-    const query = "INSERT INTO products (product_name, description, price, discount, item_category, item_image, brand, quantity) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    const query = `
+      INSERT INTO products (product_name, description, price, discount, item_category, item_image, brand, quantity, subcategory_id)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+    `;
 
     db.query(
         query,
-        [product_name, description, price, discount, item_category, item_image, brand, quantity],
+        [product_name, description, price, discount, item_category, item_image, brand, quantity, subcategory_id],
         (err, result) => {
             if (err) {
                 console.error("Error adding product: ", err);
@@ -201,7 +239,178 @@ app.post("/Addproduct", upload.single('item_image'), (req, res) => {
 
 
 
+app.get('/getcategory', (req, res) => {
+  const sql = 'SELECT * FROM categories';
+  db.query(sql, (err, results) => {
+    if (err) {
+      res.status(500).json({ error: err.message });
+    } else {
+      res.json(results);
+    }
+  });
+});
 
+// Create a new category
+app.post('/addcategory', (req, res) => {
+  const { name } = req.body;
+  const sql = 'INSERT INTO categories (name) VALUES (?)';
+  db.query(sql, [name], (err, result) => {
+    if (err) {
+      res.status(500).json({ error: err.message });
+    } else {
+      res.status(201).send({ message: 'Category created successfully', id: result.insertId });
+    }
+  });
+});
+// Get a specific category by ID
+app.get('/category/:categoryId', (req, res) => {
+  const { categoryId } = req.params;
+  const sql = 'SELECT * FROM categories WHERE id = ?';
+  db.query(sql, [categoryId], (err, result) => {
+    if (err) {
+      res.status(500).json({ error: err.message });
+    } else {
+      res.json(result[0]);
+    }
+  });
+});
+
+
+// Update a category
+app.put('/updatecategory/:categoryId', (req, res) => {
+  const { categoryId } = req.params;
+  const { name } = req.body;
+  const sql = 'UPDATE categories SET name = ? WHERE id = ?';
+  db.query(sql, [name, categoryId], (err) => {
+    if (err) {
+      res.status(500).json({ error: err.message });
+    } else {
+      res.json({ message: 'Category updated successfully' });
+    }
+  });
+});
+
+// Delete a category
+app.delete('/deletecategory/:categoryId', (req, res) => {
+  const { categoryId } = req.params;
+  const sql = 'DELETE FROM categories WHERE id = ?';
+  db.query(sql, [categoryId], (err) => {
+    if (err) {
+      res.status(500).json({ error: err.message });
+    } else {
+      res.json({ message: 'Category deleted successfully' });
+    }
+  });
+});
+
+// Get all subcategories of a specific category
+app.get('/:categoryName/subcategories', (req, res) => {
+  const { categoryName } = req.params;
+
+  // First, get the category ID based on the category name
+  const getCategoryIdQuery = 'SELECT id FROM categories WHERE name = ?';
+
+  db.query(getCategoryIdQuery, [categoryName], (err, categoryResults) => {
+    if (err) {
+      return res.status(500).json({ error: err.message });
+    }
+
+    if (categoryResults.length === 0) {
+      return res.status(404).json({ error: 'Category not found.' });
+    }
+
+    const categoryId = categoryResults[0].id;
+
+    // Then, get the subcategories based on the category ID
+    const getSubcategoriesQuery = 'SELECT * FROM subcategories WHERE category_id = ?';
+
+    db.query(getSubcategoriesQuery, [categoryId], (err, subcategoryResults) => {
+      if (err) {
+        return res.status(500).json({ error: err.message });
+      }
+
+      res.json(subcategoryResults);
+    });
+  });
+});
+
+
+// Get a specific subcategory by ID under a specific category
+app.get('/category/:categoryId/subcategories/:subcategoryId', (req, res) => {
+  const { categoryId, subcategoryId } = req.params;
+  const sql = 'SELECT * FROM subcategories WHERE category_id = ? AND id = ?';
+  db.query(sql, [categoryId, subcategoryId], (err, result) => {
+    if (err) {
+      res.status(500).json({ error: err.message });
+    } else {
+      res.json(result[0]);
+    }
+  });
+});
+
+// Create a new subcategory for a specific category
+// app.post('/:categoryId/subcategories', (req, res) => {
+//   const { categoryId } = req.params;
+//   const { name } = req.body;
+//   const sql = 'INSERT INTO subcategories (name, category_id) VALUES (?, ?)';
+//   db.query(sql, [name, categoryId], (err, result) => {
+//     if (err) {
+//       res.status(500).json({ error: err.message });
+//     } else {
+//       res.status(201).json({ message: 'Subcategory created successfully', id: result.insertId });
+//     }
+//   });
+// });
+
+// Update a subcategory
+// app.put('/:categoryId/subcategories/:subcategoryId', (req, res) => {
+//   const { subcategoryId } = req.params;
+//   const { name } = req.body;
+//   const sql = 'UPDATE subcategories SET name = ? WHERE id = ?';
+//   db.query(sql, [name, subcategoryId], (err) => {
+//     if (err) {
+//       res.status(500).json({ error: err.message });
+//     } else {
+//       res.json({ message: 'Subcategory updated successfully' });
+//     }
+//   });
+// });
+
+// Delete a subcategory
+// app.delete('/:categoryId/subcategories/:subcategoryId', (req, res) => {
+//   const { subcategoryId } = req.params;
+//   const sql = 'DELETE FROM subcategories WHERE id = ?';
+//   db.query(sql, [subcategoryId], (err) => {
+//     if (err) {
+//       res.status(500).json({ error: err.message });
+//     } else {
+//       res.json({ message: 'Subcategory deleted successfully' });
+//     }
+//   });
+// });
+
+
+
+
+// Get products by subcategory name
+app.get('/products/:subcategoryName', (req, res) => {
+    const { subcategoryName } = req.params;
+    const sql = `
+    SELECT p.id, p.product_name, p.description, p.price
+    FROM products p
+    JOIN subcategories s ON p.subcategory_id = s.id
+    WHERE s.name = ?;
+  `;
+  
+    db.query(sql, [subcategoryName], (err, results) => {
+      if (err) {
+        res.status(500).json({ error: err.message });
+      } else {
+        res.json(results);
+      }
+    });
+  });
+  
 
 // Start the server
 app.listen(Port, () => {

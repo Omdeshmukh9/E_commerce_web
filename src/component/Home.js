@@ -19,7 +19,7 @@ export default function Home() {
       {/* <ShowProduct/> */}
       {/* <SwiperComp /> */}
       <MyTeam/>
-      {/* <AddProductForm/> */}
+      <AddProductForm/>
             {/* <h1>This is Home</h1> */}
 
     </Layout>
