@@ -1,0 +1,29 @@
+To run an eCommerce React app locally, the minimum PC requirements are fairly modest, but for a smooth experience—especially if you're using tools like Visual Studio Code, Git, and a browser simultaneously—here's what you need:
+
+🖥️ Minimum PC Requirements for Running a React App
+✅ Basic Setup (Development)
+Component	Minimum Requirement	Recommended for Smooth Experience
+Processor	Dual-core (Intel i3 / AMD Ryzen 3)	Quad-core (Intel i5 / Ryzen 5 or better)
+RAM	4 GB	8 GB or more
+Storage	10 GB free (SSD preferred)	256 GB SSD or more
+Operating System	Windows 10 / macOS 10.14+ / Linux	Latest stable version of OS
+Node.js	v16 or newer	Latest LTS version (e.g., 18.x or 20.x)
+Browser	Latest version of Chrome/Firefox/Edge	Chrome (for best DevTools support)
+
+🛠️ Tools You Might Be Running Simultaneously
+Code Editor: VS Code or WebStorm
+
+Browser: Chrome or Firefox
+
+Terminal: For running dev server
+
+Git Client: Optional, for version control
+
+Package Manager: npm or yarn
+
+🧠 Tips
+Use an SSD: Greatly improves build speed and app responsiveness.
+
+Close heavy background apps: Browsers and editors consume RAM quickly.
+
+Enable swap memory (Linux) if you only have 4GB RAM.
