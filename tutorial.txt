@@ -1,0 +1,96 @@
+🛒 How to Run an eCommerce React App Locally
+✅ Prerequisites
+Make sure you have the following installed:
+
+Node.js (v16 or above): Download Node.js
+
+npm (comes with Node.js) or yarn
+
+Git (optional but recommended): Download Git
+
+📥 Step 1: Clone the Repository
+Open your terminal and run:
+
+bash
+Copy
+Edit
+git clone https://github.com/your-username/ecommerce-react-app.git
+cd ecommerce-react-app
+Replace the URL with your actual GitHub repo if different.
+
+📦 Step 2: Install Dependencies
+Using npm:
+
+bash
+Copy
+Edit
+npm install
+Or using yarn:
+
+bash
+Copy
+Edit
+yarn install
+⚙️ Step 3: Create Environment Variables
+If your app uses environment variables (e.g., API keys), create a .env file in the root directory.
+
+Example .env:
+
+ini
+Copy
+Edit
+REACT_APP_API_BASE_URL=https://api.example.com
+REACT_APP_STRIPE_KEY=your_stripe_key_here
+Refer to .env.example if present in the repo.
+
+▶️ Step 4: Start the App
+Using npm:
+
+bash
+Copy
+Edit
+npm start
+Or using yarn:
+
+bash
+Copy
+Edit
+yarn start
+This will launch the app in development mode on http://localhost:3000.
+
+🧪 Optional: Run Tests
+If the app includes tests, you can run:
+
+bash
+Copy
+Edit
+npm test
+or
+
+bash
+Copy
+Edit
+yarn test
+🚀 Build for Production
+To generate a production-ready build:
+
+bash
+Copy
+Edit
+npm run build
+or
+
+bash
+Copy
+Edit
+yarn build
+
+
+
+
+
+
+
+
+
+
